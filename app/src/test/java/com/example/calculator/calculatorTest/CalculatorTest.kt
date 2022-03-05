@@ -6,6 +6,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
+import java.lang.Exception
 
 @RunWith(MockitoJUnitRunner::class)
 class CalculatorTest {
@@ -31,6 +32,7 @@ class CalculatorTest {
         val b = 10
         val result2 = calculator.subtractTwoNumbers(a, b)
         assertThat(result2).isNotNull()
+
     }
 
     @Test
@@ -45,7 +47,12 @@ class CalculatorTest {
     fun givenValidInput_whenDivide() {
         val a = 10
         val b = 10
-        val result4 = calculator.divideTwoNumbers(a, b)
-        assertThat(result4).isNotNull()
+        try {
+            val result4 = calculator.divideTwoNumbers(a, b)
+            assertThat(result4).isNotNull()
+        }catch (e:Exception){
+            print("$e")
+        }
+
     }
 }
